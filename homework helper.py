@@ -1,64 +1,35 @@
- #INTRODUCTION
-print("Hello, and welcome to Jai's price calculator! This program allows you to calculate tax on essential or personal needs!")
-print ("")
+# tax calculator for multiple items
+def calcTax(items, tax=0.13):
+
+    # declare total
+    tC = 0
+
+    # calculate total
+    for i in range(0, len(items)):
+        tC += items[i]
+    
+    return tC * (1 + float(tax))
 
 
 
-#INPUT
-needs= input("Is your item a essential need or a personal need? ")
-if needs== "essential":
-   #OUTPUT
-   print("You won't be charged tax for this item")
-   #INPUT
-   items= int(input("How many items would you like to purchase? (Max 3) "))
-   if items==1:
-       #OUTPUT
-       print("The price is going to be the same")
-   elif items==2:
-        #INPUT
-        priceone= float(input("Please enter the price of the first item you maybe interested in purchasing! "))
-        pricetwo= float(input("Please enter the price of the second item you maybe interested in purchasing! "))
-        #CALCULATION
-        cost= priceone+pricetwo + pricethree
-        #OUTPUT
-        print("Your cost will be", cost)
-   else:
-        #INPUT
-        priceone= float(input("Please enter the price of the first item you maybe interested in purchasing! "))
-        pricetwo= float(input("Please enter the price of the second item you maybe interested in purchasing! "))
-        pricethree = float(input("Please enter the price of the third item you maybe interested in purchasing! "))
-        #CALCULATION
-        cost=priceone+pricetwo+pricethree
-        print("Your cost will be",cost)
+#MAIN
+
+# intro text
+print("Hello, and welcome to Jai's price calculator!\nThis program allows you to calculate tax on essential or personal needs!\n\n")
+
+# get need
+needs = raw_input("Is your item a 'essential' need or a 'personal' need? ")
+
+# get items
+itemN = int(raw_input("Enter the number of items you will be purchasing: "))
+items = [float(raw_input("ITEM " + str(i) + ": $")) for i in range(1, itemN+1)]
+
+# calculate tax
+if needs == "essential":
+
+    print("\nTotal cost: $" + str(calcTax(items, 0)))
+
 else:
-    #OUTPUT
-    print("Sorry, you will have to pay tax for this item! ")
-    items= int(input("How many items would you like to purchase? (Max 3) "))
-    if items==1:
-        #INPUT
-        priceone= float(input("Please enter the price of the first item you maybe interested in purchasing! "))
-        #CALUCLATION
-        total = priceone * 1.13
-        print("Your cost will be", total)
-    elif items==2:
-        #INPUT
-        priceone= float(input("Please enter the price of the first item you maybe interested in purchasing! "))
-        pricetwo= float(input("Please enter the price of the second item you maybe interested in purchasing! "))
-        pricethree = float(input("Please enter the price of the third item you maybe interested in purchasing! "))
-        cost= priceone+pricetwo + pricethree
-        #CALCULATION
-        total = cost * 1.13
-        #OUTPUT
-        print("Your cost will be", total)
-    else:
-        #INPUT
-        priceone= float(input("Please enter the price of the first item you maybe interested in purchasing! "))
-        pricetwo= float(input("Please enter the price of the second item you maybe interested in purchasing! "))
-        pricethree = float(input("Please enter the price of the third item you maybe interested in purchasing! "))
-        cost= priceone+pricetwo + pricethree
-        #CALCULATION
-        total = cost * 1.13
-        #OUTPUT
-        print("Your cost will be", total)
 
-
+    print("\nTotal cost: $" + str(calcTax(items)))
+raw_input()
